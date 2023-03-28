@@ -12,8 +12,8 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  strokeWeight(2);
-  colorMode(HSB, 360, 100, 100, 5);
+  strokeWeight(10);
+  colorMode(HSB, 360, 100, 100, 1);
   fft = new p5.FFT();
   song.play();
 }
@@ -25,7 +25,7 @@ function draw() {
   let hue = random(200, 280);
   let saturation = random(50, 80);
   let brightness = map(amp, 0, 255, 20, 80);
-  strokeWeight(4)
+  strokeWeight(10)
   stroke(hue, saturation, brightness);
 
   // Add a new ellipse to the list every 15 frames
