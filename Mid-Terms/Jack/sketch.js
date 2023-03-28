@@ -51,16 +51,6 @@ class Particle {
     rect(this.pos.x, this.pos.y, 3.5); //random(0.5,5));
   }
 }
- //connect(particles) {
-  //  particles.forEach((particle) => {
-    //  let distance = this.pos.dist(particle.pos);
-     // if (distance < connectionDistance) {
-     //   strokeWeight(1);
-     //   stroke(this.color);
-     //   line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
-      
- 
-  
 
 
 function setup() {
