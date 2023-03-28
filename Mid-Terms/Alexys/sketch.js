@@ -1,15 +1,18 @@
+//I want the elipses to be different colors, instead of each elipse being the same
+//Ideally I'd like the elipses to appear on beat or something but I don't mind it as is
+
 let song;
 let fft;
 let ellipseList = [];
 
 function preload() {
   // Load your sound file here
-  song = loadSound('1.mp3');
+  song = loadSound('assets/1.mp3');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  strokeWeight(2);
+  strokeWeight(10);
   colorMode(HSB, 360, 100, 100, 1);
   fft = new p5.FFT();
   song.play();
@@ -22,10 +25,11 @@ function draw() {
   let hue = random(200, 280);
   let saturation = random(50, 80);
   let brightness = map(amp, 0, 255, 20, 80);
+  strokeWeight(10)
   stroke(hue, saturation, brightness);
 
-  // Add a new ellipse to the list every 20 frames
-  if (frameCount % 20 == 0) {
+  // Add a new ellipse to the list every 15 frames
+  if (frameCount % 15 == 0) {
     let x = random(width);
     let y = random(height);
     let size = map(amp, 0, 255, 10, 100);
@@ -54,4 +58,3 @@ function draw() {
     noLoop();
   }
 }
-
