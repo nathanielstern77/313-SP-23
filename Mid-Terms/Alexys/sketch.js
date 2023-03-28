@@ -13,7 +13,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   strokeWeight(10);
-  colorMode(HSB, 360, 100, 100, 10);
+  colorMode(HSB, 360, 100, 100, 5);
   fft = new p5.FFT();
   song.play();
 }
