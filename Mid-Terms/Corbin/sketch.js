@@ -13,14 +13,6 @@ function mousePressed() {
 
   if (mouseX<width/2){
 
-  if (mysound.isPlaying()) {
-    // .isPlaying() returns a boolean
-    mysound.stop();
-    background(255, 0, 0);
-  } else {
-    mysound.play();
-    background(0, 255, 0);
-  }}
 
   }
 }
