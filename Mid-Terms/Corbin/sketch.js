@@ -1,6 +1,3 @@
-let mysound
-let mysound2
-
 
 function setup() {
   // put setup code here
