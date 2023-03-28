@@ -22,7 +22,6 @@ function mousePressed() {
     background(0, 255, 0);
   }}
 
-else {
   }
 }
 
