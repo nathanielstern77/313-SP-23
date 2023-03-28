@@ -25,7 +25,6 @@ function mousePressed() {
 else {
   if (mysound2.isPlaying()) {
     // .isPlaying() returns a boolean
-    mysound2.stop();
   }
 }
 
