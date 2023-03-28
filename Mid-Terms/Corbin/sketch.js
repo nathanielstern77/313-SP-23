@@ -1,10 +1,6 @@
 let mysound
 let mysound2
 
-function preload(){
-  mysound=loadSound('./assets/1.mp3')
-  mysound2=loadSound('./assets/2.mp3')
-}
 
 function setup() {
   // put setup code here
