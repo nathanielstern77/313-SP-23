@@ -11,7 +11,6 @@ function draw() {
 
 function mousePressed() {
 
-  if (mouseX<width/2){
 
 
   }
