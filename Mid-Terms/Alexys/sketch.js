@@ -1,43 +1,60 @@
-let mysound
-let mysound2
+//I want there to be more variation in color 
 
-function preload(){
-  mysound=loadSound('./assets/1.mp3')
-  mysound2=loadSound('./assets/2.mp3')
+
+let song;
+let fft;
+let ellipseList = [];
+
+function preload() {
+  // Load your sound file here
+  song = loadSound('assets/1.mp3');
 }
 
 function setup() {
-  // put setup code here
-  createCanvas(500, 500);
-  background('white')
+  createCanvas(windowWidth, windowHeight);
+  strokeWeight(10);
+  colorMode(HSB, 360, 100, 100, 10);
+  fft = new p5.FFT();
+  song.play();
 }
 
 function draw() {
-  // put drawing code here
-}
+  background(0, 0.1);
+  let spectrum = fft.analyze();
+  let amp = fft.getEnergy("bass");
+  let hue = random(200, 280);
+  let saturation = random(50, 80);
+  let brightness = map(amp, 0, 255, 20, 80);
+  strokeWeight(5)
+  stroke(hue, saturation, brightness);
 
-function mousePressed() {
-
-  if (mouseX<width/2){
-
-  if (mysound.isPlaying()) {
-    // .isPlaying() returns a boolean
-    mysound.stop();
-    background(255, 0, 0);
-  } else {
-    mysound.play();
-    background(0, 255, 0);
-  }}
-
-else {
-  if (mysound2.isPlaying()) {
-    // .isPlaying() returns a boolean
-    mysound2.stop();
-    background(255, 0, 0);
-  } else {
-    mysound2.play();
-    background(0, 255, 0);
+  // Add a new ellipse to the list every 15 frames
+  if (frameCount % 15 == 0) {
+    let x = random(width);
+    let y = random(height);
+    let size = map(amp, 0, 255, 10, 100);
+    ellipseList.push({
+      x: x,
+      y: y,
+      size: size
+    });
   }
-}
 
+  // Draw all the ellipses in the list
+  for (let i = 0; i < ellipseList.length; i++) {
+    let ellipseObj = ellipseList[i];
+    ellipseObj.size += 0.5;
+    if (ellipseObj.size > 300) {
+      ellipseList.splice(i, 1);
+    } else {
+      noFill();
+      ellipse(ellipseObj.x, ellipseObj.y, ellipseObj.size);
+    }
+  }
+
+  // If the song ends, stop the sound and exit the sketch
+  if (song.isPlaying() == false) {
+    song.stop();
+    noLoop();
+  }
 }
