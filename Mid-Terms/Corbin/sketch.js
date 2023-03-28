@@ -23,7 +23,6 @@ function mousePressed() {
   }}
 
 else {
-  if (mysound2.isPlaying()) {
   }
 }
 
