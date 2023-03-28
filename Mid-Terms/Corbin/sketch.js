@@ -27,7 +27,6 @@ else {
     // .isPlaying() returns a boolean
     mysound2.stop();
     background(255, 0, 0);
-  } else {
     mysound2.play();
     background(0, 255, 0);
   }
