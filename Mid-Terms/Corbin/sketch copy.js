@@ -3,7 +3,7 @@ let numRows = 25;
 let cellWidth, cellHeight;
 let img;
 function preload() {
- img = loadImage('IMG_9162.jpg');}
+ img = loadImage('assets copy/IMG_9162.jpg');}
 
 function setup() {
   createCanvas(400, 400);
