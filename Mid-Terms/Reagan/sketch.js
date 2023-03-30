@@ -2,7 +2,7 @@ let drums, stick,stickx,sticky
 function preload() {
 
   bottom=loadSound('sticks.mp3')
-  cymb=loadSound('Cymb.mp3')
+  //cymb=loadSound('Cymb.mp3')
 drum=loadSound('drum.mp3')
   drums = loadImage('blink .jpg')
   stick = loadImage('Stick.png')

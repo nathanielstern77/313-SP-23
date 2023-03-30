@@ -6,9 +6,9 @@ let songStarted = false; //This was made because my song wasn't starting when a 
 function preload() {
   let index = Math.floor(Math.random() * 2) + 1; // Choose a random song between the two and by changing the 2 I can determine which song I want to select & help from gpt
   // Loading the strings that are in the lyrics folder
-  lyricsData = loadStrings(`assests/lyrics/lyrics${index}.txt`)
+  lyricsData = loadStrings(`assets/lyrics/lyrics${index}.txt`)
   // Loading the songs that are in the songs folder
-  song = loadSound(`assests/mp3/song${index}.mp3`) //help from the creative coding blog
+  song = loadSound(`assets/mp3/song${index}.mp3`) //help from the creative coding blog
 }
 
 function setup() {
@@ -34,7 +34,7 @@ function draw() {
 
   for (let i = 0; i < words.length; i++) { //Goes through the words array
     let word = words[i].word //Get words from word array
-    let w = textWidth(word) + 10 //I believe this selects the size of the words based on pixels so if I increase the 10 it will have a greater area of selection
+    let w = textWidth(word) + 20 //I believe this selects the size of the words based on pixels so if I increase the 10 it will have a greater area of selection
 
     // See if the mouse is hovering over the current word
     if (mouseX > x && mouseX < x + w && mouseY > y - 20 && mouseY < y) { //help from gpt
