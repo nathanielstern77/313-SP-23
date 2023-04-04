@@ -1,43 +1,67 @@
-let mysound
-let mysound2
-
-function preload(){
-  mysound=loadSound('./assets/1.mp3')
-  mysound2=loadSound('./assets/2.mp3')
-}
+let vertpoints = [];
+let mic;
 
 function setup() {
-  // put setup code here
-  createCanvas(500, 500);
-  background('white')
+  createCanvas(windowWidth, windowHeight);
+for (let i = 0; i < 0; i++) {
+  let x = windowWidth*0.2 + 100 * i;
+  let y = windowHeight*0.5 + 0 * i;
+  vertpoints[i] = new vertpoint (x,y, 50);
 }
+ mic = new p5.AudioIn();//initiates audio
+ mic.start();
+}
+
+function mouseClicked() {//adds a point whenever mouse is clicked
+  let r = random(10, 50);
+  let b = new vertpoint(mouseX, mouseY, r);
+  vertpoints.push(b);}
 
 function draw() {
-  // put drawing code here
-}
-
-function mousePressed() {
-
-  if (mouseX<width/2){
-
-  if (mysound.isPlaying()) {
-    // .isPlaying() returns a boolean
-    mysound.stop();
-    background(255, 0, 0);
-  } else {
-    mysound.play();
-    background(0, 255, 0);
-  }}
-
-else {
-  if (mysound2.isPlaying()) {
-    // .isPlaying() returns a boolean
-    mysound2.stop();
-    background(255, 0, 0);
-  } else {
-    mysound2.play();
-    background(0, 255, 0);
+  //background(100,3);
+  blendMode(DIFFERENCE);
+ let level = mic.getLevel();
+ colorMode(HSB,100) 
+  stroke(random(40,60),random(50,100),random(50+level*1200))
+  strokeWeight(level*300)
+  noFill();
+ 
+  beginShape();
+  curveVertex(windowWidth*0.1, windowHeight*0.5);
+  curveVertex(windowWidth*0.1, windowHeight*0.5);
+  for (let i = 0; i < vertpoints.length; i++) {
+    vertpoints[i].move();
+    vertpoints[i].show();
   }
+  curveVertex(windowWidth*0.9, windowHeight*0.5);
+  curveVertex(windowWidth*0.9, windowHeight*0.5);
+  endShape();
+
+  console.log(level)
 }
 
+class vertpoint {//start of object
+  constructor() {
+  this.x = random(windowWidth*0.1,windowWidth*0.9);
+  this.y = windowHeight/2;
+  this.speedx = random(-1,1)
+  this.speedy= random(-3,3)
+  }
+
+  move() {//how object moves
+  this.x = this.x + this.speedx
+  this.y = this.y + this.speedy
+  this.x=this.x+this.speedx//added from bouncing ball
+  this.y=this.y+this.speedy
+  if(this.x>windowWidth) {this.speedx=this.speedx*-1}
+  if(this.y>windowHeight) {this.speedy=this.speedy*-1}
+  if(this.x<5) {this.speedx=this.speedx*-1}
+  if(this.y<5){this.speedy=this.speedy*-1}//end added from bouncing ball
+  }
+
+  show() {curveVertex(this.x,this.y)}//litterally what the object actually is
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
