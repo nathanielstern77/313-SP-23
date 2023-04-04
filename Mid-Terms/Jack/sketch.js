@@ -1,5 +1,5 @@
 let particles = [];
-let numParticles = 6000;
+let numParticles = 4000;
 //let noiseScale = random(0.001, 0.1);
 //let connectionDistance = 50;
 
@@ -17,7 +17,7 @@ class Particle {
     
     if (mouseIsPressed && mouseDist < 1000) {
       let attraction = p5.Vector.sub(mouse, this.pos);
-      attraction.mult(0.055);
+      attraction.mult(0.030);
       this.acc.add(attraction);
     
     }
@@ -28,7 +28,7 @@ class Particle {
 
    this.acc.add(noiseVector);
     this.vel.add(this.acc);
-    this.vel.limit(100);
+    this.vel.limit(70);
     this.pos.add(this.vel);
     this.acc.mult(0);
 
@@ -48,19 +48,9 @@ class Particle {
   show() {
     fill(this.color);
     noStroke();
-    rect(this.pos.x, this.pos.y, 3.5); //random(0.5,5));
+    rect(this.pos.x, this.pos.y, 2.5); //random(0.5,5));
   }
 }
- //connect(particles) {
-  //  particles.forEach((particle) => {
-    //  let distance = this.pos.dist(particle.pos);
-     // if (distance < connectionDistance) {
-     //   strokeWeight(1);
-     //   stroke(this.color);
-     //   line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
-      
- 
-  
 
 
 function setup() {
@@ -71,7 +61,7 @@ function setup() {
 }
 
 function draw() {
-  background(0, 0, 70);
+  background(0, 0, 70, 120);
 
   particles.forEach((particle) => {
     particle.update();
