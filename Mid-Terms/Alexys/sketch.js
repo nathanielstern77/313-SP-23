@@ -7,7 +7,7 @@ let ellipseList = [];
 
 function preload() {
   // Load your sound file here
-  song = loadSound('assets/1.mp3');
+  song = loadSound('assets/song2.mp3');
 }
 
 function setup() {
@@ -29,7 +29,7 @@ function draw() {
   stroke(hue, saturation, brightness);
 
   // Add a new ellipse to the list every 15 frames
-  if (frameCount % 15 == 0) {
+  if (frameCount % 20 == 0) {
     let x = random(width);
     let y = random(height);
     let size = map(amp, 0, 255, 10, 100);
