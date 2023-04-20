@@ -23,6 +23,8 @@ let DEFAULT_SIZE = 1000,
  DIM = Math.min(WIDTH, HEIGHT),
  M = DIM / DEFAULT_SIZE
 
+// call fxpreview() for preview image!
+
  function setup() {
  frameRate(20)
  var canvas = createCanvas(DIM, DIM);
