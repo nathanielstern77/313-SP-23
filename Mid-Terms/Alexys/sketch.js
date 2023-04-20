@@ -27,7 +27,6 @@ function draw() {
   let brightness = map(amp, 0, 255, 20, 80);
   strokeWeight(5)
   stroke(hue, saturation, brightness);
-
   // Add a new ellipse to the list every 15 frames
   if (frameCount % 20 == 0) {
     let x = random(width);
