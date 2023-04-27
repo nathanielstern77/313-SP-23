@@ -5,10 +5,11 @@ function preload() {
 
 function setup() {
   // put setup code her
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight)
+  background(220);
 
   x= 0
-  image(img,0,0,width,height)
+  //image(img,0,0,width,height)
 }
 
 function draw() {
