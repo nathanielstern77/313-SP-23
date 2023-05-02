@@ -9,19 +9,21 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(5)
   image(img,0,0,width,height)
+  strokeWeight(8)
   song.play();
 }
 
 function draw() {
-textSize(random(20, 100))
-  random(30)
+textSize(random(20, 70))
   textFont("Times New Roman")
+  fill( random(0,255), random(0,255), random(0,255) )
   let theWord = randoWord(mytext) //getting a random word from the array I am sending
   let word2 = randoWord(text2)
   let sentence = (theWord)
   let x = random(width-100) // generate a random x coordinate
   let y = random(height-30) // generate a random y coordinate
   text(sentence, x, y)
+  line(mouseX, mouseY, pmouseX, pmouseY);
 }
 
 function randoWord(thatlistofwords){
