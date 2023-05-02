@@ -13,7 +13,7 @@ function setup() {
 }
 
 function draw() {
-  textSize 
+textSize(random(20, 100))
   random(30)
   textFont("Times New Roman")
   let theWord = randoWord(mytext) //getting a random word from the array I am sending
