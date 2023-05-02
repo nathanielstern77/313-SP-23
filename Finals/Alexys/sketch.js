@@ -3,17 +3,18 @@ let text2=['potato','frank','go']
 let img, pixel, pixel2, x=0,y=0
 function preload(){ 
  img=loadImage('assets/screamingfrog.jpg')
+ song = loadSound('assets/peopletalking.mp3');
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(5)
-  image(img, 0, 0);
+  image(img,0,0,width,height)
+  song.play();
 }
 
 function draw() {
-  //background(255,1)
-  //fill(1)
-  textSize(30)
+  textSize 
+  random(30)
   textFont("Times New Roman")
   let theWord = randoWord(mytext) //getting a random word from the array I am sending
   let word2 = randoWord(text2)
