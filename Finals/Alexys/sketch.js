@@ -1,4 +1,4 @@
-let mytext=['ugly','dumb','stinky','beautiful','smart','funny','careless','perfect']
+let mytext=['keys','wallet','weather?','garbage day','Im hungry','my head hurts','did I take my meds?','im late']
 let text2=['potato','frank','go']
 let img, pixel, pixel2, x=0,y=0
 function preload(){ 
