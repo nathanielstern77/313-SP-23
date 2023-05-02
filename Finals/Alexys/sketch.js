@@ -3,13 +3,15 @@ let text2=['potato','frank','go']
 let img, pixel, pixel2, x=0,y=0
 function preload(){ 
  img=loadImage('assets/screamingfrog.jpg')
- song = loadSound('assets/peopletalking.mp3');
+ song = loadSound('assets/peopletalking.mp3')
+ var fonts = ["Comic Sans MS", "Futura", "Courier New", "Montserrat", "Didot"];
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(5)
   image(img,0,0,width,height)
   strokeWeight(8)
+  index = round(random(0, 4))
   song.play();
 }
 
