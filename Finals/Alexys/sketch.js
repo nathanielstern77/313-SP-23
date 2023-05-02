@@ -3,8 +3,7 @@ let text2=['potato','frank','go']
 let img, pixel, pixel2, x=0,y=0
 function preload(){ 
  img=loadImage('assets/screamingfrog.jpg')
- song = loadSound('assets/peopletalking.mp3')
- var fonts = ["Comic Sans MS", "Futura", "Courier New", "Montserrat", "Didot"];
+ song = loadSound('assets/peopletalking.mp3');
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -27,7 +26,10 @@ textSize(random(20, 70))
   text(sentence, x, y)
   line(mouseX, mouseY, pmouseX, pmouseY);
 }
-
+function mousepressed() {
+  x += 1;
+  refresh();
+}
 function randoWord(thatlistofwords){
   let ranthing = floor(random(0, thatlistofwords.length)) //checking length of array so I can get the right range of random numbers
   return thatlistofwords[ranthing]
