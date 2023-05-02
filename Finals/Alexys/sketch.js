@@ -1,14 +1,18 @@
 let mytext=['ugly','dumb','stinky','beautiful','smart','funny','careless','perfect']
 let text2=['potato','frank','go']
-
+let img, pixel, pixel2, x=0,y=0
+function preload(){ 
+ img=loadImage('assets/screamingfrog.jpg')
+}
 function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(5)
+  image(img, 0, 0);
 }
 
 function draw() {
-  background(255,1)
-  fill(1)
+  //background(255,1)
+  //fill(1)
   textSize(30)
   textFont("Times New Roman")
   let theWord = randoWord(mytext) //getting a random word from the array I am sending
