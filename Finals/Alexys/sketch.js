@@ -1,9 +1,19 @@
 let mytext=['keys','wallet','weather?','garbage day','Im hungry','my head hurts','did I take my meds?','im late']
 let text2=['potato','frank','go']
 let img, pixel, pixel2, x=0,y=0
+let photo = []
+let numPhoto = 4
+
 function preload(){ 
- img=loadImage('assets/screamingfrog.jpg')
+ //img=loadImage('assets/screamingfrog.jpg')
  song = loadSound('assets/peopletalking.mp3');
+ let photo1 = loadImage('assets/1.jpg');
+ let photo2 = loadImage('assets/2.jpg');
+ let photo3 = loadImage('assets/3.png');
+ let photo4 = loadImage('assets/4.png');
+ photo = [photo1,photo2,photo3,photo4];
+
+
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -24,7 +34,12 @@ textSize(random(20, 70))
   let x = random(width-100) // generate a random x coordinate
   let y = random(height-30) // generate a random y coordinate
   text(sentence, x, y)
-  line(mouseX, mouseY, pmouseX, pmouseY);
+  line(mouseX, mouseY, pmouseX, pmouseY)
+
+  imageMode(center);
+
+  let randoImage = random(photo);
+
 }
 function mousepressed() {
   x += 1;
@@ -33,4 +48,6 @@ function mousepressed() {
 function randoWord(thatlistofwords){
   let ranthing = floor(random(0, thatlistofwords.length)) //checking length of array so I can get the right range of random numbers
   return thatlistofwords[ranthing]
+  
 }
+
