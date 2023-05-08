@@ -1,4 +1,4 @@
-let mytext=['keys','wallet','weather?','garbage day','Im hungry','my head hurts','did I take my meds?','im late']
+let mytext=['dont forget your keys','grab your wallet','what is the weather like?','its garbage day','Im hungry','my head hurts','did I take my meds?','im late']
 let text2=['potato','frank','go']
 
 let img, pixel, pixel2, x=0,y=0
@@ -11,7 +11,7 @@ function preload(){
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(random(0,255))
+  background(random(50,200), random(50,200), random(50,200))
  
   frameRate(5) //text rate
   
@@ -23,8 +23,6 @@ function setup() {
 }
 
 function draw() {
-
-  //background(random(0,255))
 textSize(random(20, 70))
   textFont("Times New Roman")
   fill( random(0,200), random(0,200), random(0,200) )
