@@ -4,18 +4,14 @@ let text2=['potato','frank','go']
 let img, pixel, pixel2, x=0,y=0
 
 function preload(){ 
- //img=loadImage('assets/2.jpg')
-
  song = loadSound('assets/peopletalking.mp3')
- //song = loadSound('assets/song2.mp3');
+
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(random(50,200), random(50,200), random(50,200))
- 
+
   frameRate(5) //text rate
-  
-  //image(img,0,0,width,height)
   
   strokeWeight(8) //for mouse tracker width
   index = round(random(0, 4))
