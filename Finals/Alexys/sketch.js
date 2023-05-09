@@ -11,7 +11,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   background(random(50,200), random(50,200), random(50,200))
 
-  frameRate(5) //text rate
+  frameRate(8) //text rate
   
   strokeWeight(8) //for mouse tracker width
   index = round(random(0, 4))
