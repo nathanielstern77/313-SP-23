@@ -30,10 +30,7 @@ textSize(random(20, 70))
   text(sentence, x, y)
   line(mouseX, mouseY, pmouseX, pmouseY);
 }
-function mousepressed() {
-  x += 1;
-  refresh();
-}
+
 function randoWord(thatlistofwords){
   let ranthing = floor(random(0, thatlistofwords.length)) //checking length of array so I can get the right range of random numbers
   return thatlistofwords[ranthing]
