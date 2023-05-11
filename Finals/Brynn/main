@@ -1,0 +1,209 @@
+let gradientLeft;
+let gradientRight;
+let x = 200
+let points = [];
+let field = [];
+let rez = 10;
+let cols, rows;
+
+function setup() {
+  createCanvas(1325, 600);
+
+  gradientLeft = createRadialGradient(0, random(0,500), 0);
+  gradientMiddle = createRadialGradient(0, random(0,500), 0);
+  gradientRight = createRadialGradient(0, random(0,500), 0);
+
+  for (let i = 0; i < 5; i++) {
+    let position = i / 5;
+    let c = color(random(255), random(255), random(255));
+    let d = color(random(255), random(255), random(255));
+    let e = color(random(255), random(255), random(255));
+    gradientLeft.colors(position, c);
+    gradientRight.colors(position, d);
+    gradientMiddle.colors(position, e);
+
+  }
+
+  //WORLEY NOISE BACKGROUND
+
+  cols = 1 + width / rez;
+  rows = 1 + height / rez;
+  for (let i = 0; i < cols; i++) {
+    let k = [];
+    for (let j = 0; j < rows; j++) {
+      k.push(0);
+    }
+    field.push(k);
+  }
+  for (let i = 0; i < 75; i++) {
+    points.push(createVector(random(cols), random(rows), random(cols)));
+  }
+}
+
+  function drawLine(v1, v2) {
+    line(v1.x, v1.y, v2.x, v2.y);
+  }
+
+function draw() {
+
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      let distances = [];
+      for (let n = 0; n < points.length; n++) {
+        let v = points[n];
+        let z = frameCount % cols;
+        let d = dist(i, j, z, v.x, v.y, v.z);
+        distances.push(d);
+      }
+      let sorted = sort(distances);
+      field[i][j] = sorted[1];
+    }
+  }
+
+  
+  let factor = 3;
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      fill(field[i][j] * factor);
+      noStroke();
+      rect(i * rez, j * rez, rez, rez);
+    }
+  }
+
+    //background
+    fill(135,206,250, 120)
+    push();
+    translate(0, 0);             
+    rect(0, 0, 1325, 600);
+    pop(); 
+
+  // Left
+  fillGradient(gradientLeft);
+  noStroke();
+  push();
+  translate(210, 300);             
+  ellipse(0, 0, 400, 400);
+  pop(); 
+
+  // Right
+  fillGradient(gradientRight);
+  noStroke();
+  push();
+  translate(1115, 300);             
+  ellipse(0, 0, 400, 400);
+  pop(); 
+
+  // Middle
+  fillGradient(gradientMiddle);
+  noStroke();
+  push();
+  translate(665, 300);             
+  ellipse(0, 0, 400, 400);
+  pop(); 
+
+
+  for (let i = 0; i < cols - 1; i++) {
+    for (let j = 0; j < rows - 1; j++) {
+      let x = i * rez;
+      let y = j * rez;
+      let a = createVector(x + rez * 0.5, y);
+      let b = createVector(x + rez, y + rez * 0.5);
+      let c = createVector(x + rez * 0.5, y + rez);
+      let d = createVector(x, y + rez * 0.5);
+
+      let threshold = 35;
+      let c1 = field[i][j] * factor < threshold ? 0 : 1;
+      let c2 = field[i + 1][j] * factor < threshold ? 0 : 1;
+      let c3 = field[i + 1][j + 1] * factor < threshold ? 0 : 1;
+      let c4 = field[i][j + 1] * factor < threshold ? 0 : 1;
+
+      let state = getState(c1, c2, c3, c4);
+      stroke(255);
+      strokeWeight(5);
+      switch (state) {
+        case 1:
+          drawLine(c, d);
+          break;
+        case 2:
+          drawLine(b, c);
+          break;
+        case 3:
+          drawLine(b, d);
+          break;
+        case 4:
+          drawLine(a, b);
+          break;
+        case 5:
+          drawLine(a, d);
+          drawLine(b, c);
+          break;
+        case 6:
+          drawLine(a, c);
+          break;
+        case 7:
+          drawLine(a, d);
+          break;
+        case 8:
+          drawLine(a, d);
+          break;
+        case 9:
+          drawLine(a, c);
+          break;
+        case 10:
+          drawLine(a, b);
+          drawLine(c, d);
+          break;
+        case 11:
+          drawLine(a, b);
+          break;
+        case 12:
+          drawLine(b, d);
+          break;
+        case 13:
+          drawLine(b, c);
+          break;
+        case 14:
+          drawLine(c, d);
+          break;
+      }
+    }
+  }
+}
+
+
+
+function getState(a, b, c, d) {
+  return a * 8 + b * 4 + c * 2 + d * 1;
+}
+
+
+
+/*  newBezier([pointsArray[1], pointsArray[2]]); */
+
+  // // RIGHT GRADIENT
+  // fillGradient(gradientLeft);
+  // noStroke();
+  // push();
+  // translate(0,0);             
+  // rect(0, 0, 400, 400);
+  // pop(); 
+
+  // // LEFT GRADIENT!
+  // fillGradient(gradientRight);
+  // noStroke();
+  // push();
+  // translate(925, 0);             
+  // rect(0, 0, 400, 400);
+  // pop(); 
+
+  // // LEFT GRADIENT!
+  // fillGradient(gradientMiddle);
+  // noStroke();
+  // push();
+  // translate(465, 0);             
+  // rect(0, 0, 400, 400);
+  // pop(); 
+
+  fill(255, 255, 255)
+  rect(0, 450, 1325, 100)
+  translate(0 ,600) 

@@ -1,0 +1,72 @@
+let img;
+let c;
+let x = 350; // where square starts
+let y = 300;
+let imageHeight;
+let imageWidth = 0;
+let squares = []
+
+let blendModeAreaX = 80;
+let blendModeAreaY = 0;
+let blendModeAreaWidth = 80;
+let blendModeAreaHeight = 800;
+
+
+function preload() {
+  img = loadImage("Nadja.jpg");
+}
+
+function setup() {
+  createCanvas((windowHeight * 425) / 600, windowHeight);
+  mysquares();
+  console.log(squares);
+
+  blendMode(DIFFERENCE);
+  
+ 
+}
+
+function draw() {
+   push();
+  blendMode(DIFFERENCE);
+  fill(255, 0, 0);
+  rect(blendModeAreaX, blendModeAreaY, blendModeAreaWidth, blendModeAreaHeight);
+  pop();
+
+  
+  
+  
+  noStroke();
+  background(0);
+  image(img, 0, 0, width, height);
+  c = get(mouseX, mouseY);
+  c[50] = 50; // opacity of Square
+  fill(c);
+  rect(x, y, 5, 5); // size of square
+  updatePixels();
+
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].x += squares[i].xspeed;
+    squares[i].y += squares[i].yspeed;
+    rect(squares[i].x, squares[i].y, 5, 5);
+ 
+
+  }
+}
+
+function mysquares() {
+  squares = [];
+  for (let i = 0; i < 200; i++) {
+    squares.push({
+      x: random(0, 400),//250,400
+      y: random(0, 700), //300
+      xspeed: random(0.01, 2),
+      yspeed: random(-1, -3),
+    });
+  }
+}
+setInterval(loopFunction,4300);
+
+function loopFunction() {
+  mysquares();
+}
