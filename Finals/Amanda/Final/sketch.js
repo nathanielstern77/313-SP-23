@@ -39,7 +39,7 @@ function draw() {
   let level = mic.getLevel();
   console.log(level)
 
-
+strokeWeight(level*800);
   
 if(level>0.05) {
   invertBackground = !invertBackground;
@@ -60,17 +60,17 @@ if(level>0.05) {
   curveVertex(windowWidth*0.1, windowHeight*0.5);
   curveVertex(windowWidth*0.1, windowHeight*0.5);
   
-  if (level > 0.07) {
+  if (level > 0.08) {
   //if (mouseIsPressed) {
-    strokeWeight(random(5,30));
+   // strokeWeight(level*120);
     curveVertex(random(0,width),random(0,height));
     curveVertex(random(0,width),random(0,height));
     curveVertex(random(0,width),random(0,height));
   
   } else if (pose) {
  //stroke dependant on proximity to camera
- let d = (dist(pose.rightEye.x, pose.rightEye.y, pose.leftEye.x, pose.leftEye.y))*12;
-strokeWeight(0.05* d);
+ //let d = (dist(pose.rightEye.x, pose.rightEye.y, pose.leftEye.x, pose.leftEye.y))*12;
+//strokeWeight(level);
 
 //big line stuff
 //face
