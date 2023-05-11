@@ -39,7 +39,7 @@ function draw() {
   let level = mic.getLevel();
   console.log(level)
 
-strokeWeight(level*800);
+strokeWeight(level*750);
   
 if(level>0.05) {
   invertBackground = !invertBackground;
@@ -48,7 +48,7 @@ if(level>0.05) {
    }
     
    if (invertBackground) {
-    blendMode(HARD_LIGHT); // Reset blend mode
+   // blendMode(HARD_LIGHT); // Reset blend mode
     background(0,3); // Set background
   } else {
     background(255,3); // Set background
